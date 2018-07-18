@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    #  ${} format will retrieve inject environment variable with the given name
+    url: ${POSTGRES_LOCAL_SPOC}
+    username: ${POSTGRES_LOCAL_USER}
+    password: ${POSTGRES_LOCAL_PASS}
+    hikari:
+      # Database connection pool size
+      maximum-pool-size: 10
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        temp:
+          use_jdbc_metadata_default: false
+eureka:
+  client:
+    service-url:
+      defaultzone: http:/localhost:8761/eureka/
+      
+application:
+  resources:
+    gateway-url: http://localhost:4704
+    
